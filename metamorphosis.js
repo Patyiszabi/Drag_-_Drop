@@ -100,3 +100,4 @@ function handleDrop(e) {
 }
 
 initDragAndDrop();
+
