@@ -62,21 +62,30 @@ function initDropzone(dropzone) {
     dropzone.addEventListener("dragover", handleDragOver);
     dropzone.addEventListener("dragleave", handleDragLeave);
     dropzone.addEventListener("drop", handleDrop);
+    dropzone.addEventListener("dragend", handleDragEnd);
 }
 
 function handleDragStart(e) {
     game.dragged = e.currentTarget;
     game.dragged.classList.add("dragging");
     console.log("Drag start of", game.dragged);
+         ui.slots.forEach(function (slot) {
+        slot.classList.add("active");
+    });
+   
 }
 
 function handleDragEnd() {
     console.log("Drag end of", game.dragged);
     game.dragged = null;
+    ui.slots.forEach(function (slot) {
+        slot.classList.remove("active", "drag-over");
+    });
 }
 
 function handleDragOver(e) {
     e.preventDefault();
+
 }
 
 function handleDragEnter(e) {
